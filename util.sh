@@ -1,7 +1,7 @@
 #!/bin/sh
 
 function check_connection() {
-	host=$1
+  host=$1
   port=$2
   echo "Host: $host"
   echo "Port: $port"
@@ -32,8 +32,3 @@ function check_database() {
     echo "Exiting container."
   fi
 }
-
-
-
-
-
