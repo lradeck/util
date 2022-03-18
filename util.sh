@@ -6,7 +6,7 @@ function check_connection() {
   echo "Host: $host"
   echo "Port: $port"
   echo "Connecting to http://$host:$port..."
-  timeout 2m sh -c "until curl -s http://$host:$port; do sleep 2; done"
+  timeout 3m sh -c "until curl -s http://$host:$port; do sleep 2; done"
   if [ $? -ne 0 ]; then
     echo "Timed out."
     return 1
@@ -23,7 +23,7 @@ function check_database() {
   echo "Port: $4"
   echo "Db: $5"
   echo "Trying to connect to database..."
-  timeout 2m sh -c "until psql postgresql://$1:$2@$3:$4/$5 -c '\q' > /dev/null; do sleep 2; done"
+  timeout 3m sh -c "until psql postgresql://$1:$2@$3:$4/$5 -c '\q' > /dev/null; do sleep 2; done"
   if [ $? -eq 0 ]; then
     echo "Connected to database"
     npm start
